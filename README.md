@@ -2,7 +2,7 @@
 Generic skr 1.3 / 1.4 / 1.4 turbo builds
 
 If this project help you reduce time to develop, you can give me a cup of coffee :)
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/JDassen)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JDassen)
 
 Do Note, these have not been tested by me since I have a complete different set-up (wich doesn't allow me to test this) 
 I'm in no way responsible for any damage to your machine (I'm giving safety pre-cautions and ways to test it out safely. Failure to avoid them could potentially end up in a nozzle bump in your bed)
