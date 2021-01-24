@@ -1,6 +1,9 @@
 # Generic-cr20pro-marlin-builds
 Generic skr 1.3 / 1.4 / 1.4 turbo builds
 
+If this project help you reduce time to develop, you can give me a cup of coffee :)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](PRCG783KFZSW2)
+
 Do Note, these have not been tested by me since I have a complete different set-up (wich doesn't allow me to test this) 
 I'm in no way responsible for any damage to your machine (I'm giving safety pre-cautions and ways to test it out safely. Failure to avoid them could potentially end up in a nozzle bump in your bed)
 
@@ -51,10 +54,4 @@ Power cycle and you should be good to go now.
 
 Happy Printing
 
-If this project help you reduce time to develop, you can give me a cup of coffee :)
-<form action="https://www.paypal.com/donate" method="post" target="_top">
-<input type="hidden" name="business" value="dassie1993@msn.com" />
-<input type="hidden" name="currency_code" value="EUR" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_BE/i/scr/pixel.gif" width="1" height="1" />
-</form>
+
