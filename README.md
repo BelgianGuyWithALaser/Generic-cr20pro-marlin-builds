@@ -21,10 +21,10 @@ You will also need to flip exp1 and exp2 180Degrees in their connectors. the eas
 
 Measure your BL-touch offsets, you will need to fill these in the code. (search for NOZZLE_TO_PROBE_OFFSET in config.h) hit recompile.
 
-place the .bin file Location at : SKR"Version"\Marlin-bugfix-2.0.x\.pio\build\LPC176X on your SD-card and boot up.
+place the .bin file Location at : SKR"Version"\Marlin-bugfix-2.0.x\.pio\build\LPC176X on your SD-card and boot up. 
 You should see the BL-touch do a self test, the scvreen should light up. and you should see the marlin bootscreen.
 
-DO NOT HOME ANY AXIS YET.
+DO NOT HOME ANY AXIS YET. (send M502 followed by M500. Load in your bl-touch offsets and save them in your eeprom)
 Move your bed and X-carry away from the endstops. connect with pronterface (or octoprint or cura or anything with a terminal)
 Send a M119 and see what the results are from the endstops. (https://marlinfw.org/docs/gcode/M119.html)
 X and Y should mention open. if they mention triggered you would need to invert that in the firmware. (search for X_MIN_ENDSTOP_INVERTING and invert which one mentions triggered)
@@ -44,13 +44,31 @@ Do the same for your bed : M303 E-1 C8 S60
 Now move your X and Y to 0 and set Z to 1.
 Check at what X and Y value you're at the start of your bed. (it's possible to have your endstop 10mm away from the starting point of your bed)\
 Write these 2 value's down aswell. we will fill those out in the firmware aswell, so you will have your true 235x235 printing area.
+Next load up filament (and for direct drive systems. Push through the nozzle) for bowden set-ups disconnect the bowden tube.
+Heat up the nozzle to printing temp of the loaded filament. Mark from your extruder 100mm on the filament, and 120mm.
+(you need something with an interface to make it easier)
+Send M83 (enable relative mode) after this, send G1 E100 F100 -> push 100mm out. Next measure the 120mm mark to the extruder. It should be 20mm.
+If it's not, calculate the new E-step value. (in the config it's set at 97) the calculation is ( [steps/mm value] x 100 ) / ( 120 – [length from extruder to mark] )
+Let's say you measure 30mm, this means you underextruded. so it would become (97*100)/(120-30)=9700/90=107.77 (send  M92 E###.# fill in your calculated value and redo the test untill you get 20mm measured left. this means you exactly extruded 100mm)
+
 
 Once you have those value's you wan't to set them in your firmware again (so you won't lose them at all)
 Search for PID inside the config.h (and adjust them with your numbers.) 
 for the X and Y offset, search for X_MIN_POS and fill the value in there. don't forget to make it a negative value. if you had X=5 before you reached the first edge of your bed, the value in your firmware is -5.
 This is to make the firmware know that the corner of your printbed is the origin (0.0) point.
+For the E-steps search for DEFAULT_AXIS_STEPS_PER_UNIT and fill in your calculated value. 
 Recompile and load it back to your SD-card.
 Power cycle and you should be good to go now.
+Now send a M502 followed with M500 (read all new value's and save them to the eeprom)
+
+Last thing to do is your Z-offset.
+Preheat the bed to 60, nozzle to 160.
+Home the printer, then go to the motion menu and set Z=0
+Double/triple click the controller knob to go to the Z-offset menu.
+Grab a piece of paper and place it below the nozzle. turn so your nozzle is going down towards the bed. keep wiggling the paper untill you find the nozzle gripping it slightly.
+Send M500 (or save settings in the config menu) and you should be good to go.
+
+You can "live tweak" the Z-offset mid printing and enjoy a graphical interface that tells you which way is up and down (to be on the safe side :) )
 
 Happy Printing
 
